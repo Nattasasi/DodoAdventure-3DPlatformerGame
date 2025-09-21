@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
                 // Not the last scene, delayed load next scene
                 StartCoroutine(LoadNextScene());
                 loadingMessage.SetActive(true);
-                
+
             }
             else
             {
@@ -149,6 +149,22 @@ public class GameManager : MonoBehaviour
                 gameAudio.Stop();
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+            }
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (Time.timeScale > 0)
+            {
+                Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else
+            {
+                Time.timeScale = 1;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
         }
     }

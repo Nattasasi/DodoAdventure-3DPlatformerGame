@@ -13,7 +13,6 @@ public class KeyInput : MonoBehaviour
     private GameManager gameManager;
     private PlayerController pc;
     private AudioSource audioSource;
-    private bool gamePaused = false;
     public AudioClip climbSound;
     public AudioClip jumpSound;
 
@@ -30,19 +29,6 @@ public class KeyInput : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            gamePaused = true;
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape) && gamePaused == true) {
-            Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            gamePaused = false;
-        }
 
         // Jump only if grounded
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
