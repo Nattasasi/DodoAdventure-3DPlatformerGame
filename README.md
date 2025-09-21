@@ -17,3 +17,15 @@
 
 
 ### In-Game Screenshots
+![Screenshot 2](Screenshots/Screenshot%202568-09-21%20at%2015.19.55.png)
+![Screenshot 3](Screenshots/Screenshot%202568-09-21%20at%2015.20.20.png)
+![Screenshot 4](Screenshots/Screenshot%202568-09-21%20at%2015.21.11.png)
+![Screenshot 5](Screenshots/Screenshot%202568-09-21%20at%2015.21.23.png)
+![Screenshot 6](Screenshots/Screenshot%202568-09-21%20at%2015.21.37.png)
+![Screenshot 7](Screenshots/Screenshot%202568-09-21%20at%2015.22.06.png)
+![Screenshot 8](Screenshots/Screenshot%202568-09-21%20at%2015.22.28.png)
+![Screenshot 9](Screenshots/Screenshot%202568-09-21%20at%2015.22.48.png)
+
+### Credits
+- **all assets are free from Unity Asset Store
+- **all sound effects are from freesound.org
