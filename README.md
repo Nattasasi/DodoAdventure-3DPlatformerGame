@@ -17,7 +17,6 @@
 
 
 ### In-Game Screenshots
-![Screenshot 1](Screenshots/Screenshot%202568-09-21%20at%2015.18.48.png)
 ![Screenshot 2](Screenshots/Screenshot%202568-09-21%20at%2015.19.55.png)
 ![Screenshot 3](Screenshots/Screenshot%202568-09-21%20at%2015.20.20.png)
 ![Screenshot 4](Screenshots/Screenshot%202568-09-21%20at%2015.21.11.png)
