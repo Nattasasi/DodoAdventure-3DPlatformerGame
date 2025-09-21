@@ -49,7 +49,11 @@ public class PlayerController : MonoBehaviour
         if (verticalInput != 0 || horizontalInput != 0)
         {
             MovePlayer();
-            PlayGroundSound();
+
+            if (keyInput.isGrounded)
+            {
+                PlayGroundSound();
+            }
         }
         else
         {
@@ -123,9 +127,8 @@ public class PlayerController : MonoBehaviour
 
     public void MovePlayer()
     {
-        Debug.Log("Moving player");
         // Check ground type and play sound
-        
+
         movemDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
         float currentSpeed = speed;
 
@@ -143,7 +146,7 @@ public class PlayerController : MonoBehaviour
 
         transform.position += movemDir.normalized * currentSpeed * Time.deltaTime;
 
-        
+
     }
 
     public void BouncePlayer(float force)
@@ -153,7 +156,7 @@ public class PlayerController : MonoBehaviour
         // {
         //     playerAudio.loop = false;
         // }
-        
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -161,10 +164,10 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("hazard"))
         {
             playerHealth.TakeDamage(1);
-            
+
         }
 
-       
+
     }
 
 }

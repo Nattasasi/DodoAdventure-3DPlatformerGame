@@ -29,7 +29,6 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        Debug.Log("Player took damage. Current health: " + currentHealth);
         playerAudio.PlayOneShot(damagedSound, 1.0f);
     }
 }

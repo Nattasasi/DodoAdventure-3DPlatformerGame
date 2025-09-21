@@ -13,6 +13,7 @@ public class KeyInput : MonoBehaviour
     private GameManager gameManager;
     private PlayerController pc;
     private AudioSource audioSource;
+    private bool gamePaused = false;
     public AudioClip climbSound;
     public AudioClip jumpSound;
 
@@ -29,6 +30,20 @@ public class KeyInput : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            gamePaused = true;
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && gamePaused == true) {
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            gamePaused = false;
+        }
+
         // Jump only if grounded
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
@@ -38,31 +53,6 @@ public class KeyInput : MonoBehaviour
             GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
-        // Movement input
-        // if (!isClimbing)
-        // {
-        //     Vector3 moveDir = Vector3.zero;
-
-        //     if (Input.GetKey(KeyCode.W)) moveDir += Vector3.forward;
-        //     if (Input.GetKey(KeyCode.S)) moveDir += Vector3.back;
-        //     if (Input.GetKey(KeyCode.A)) moveDir += Vector3.left;
-        //     if (Input.GetKey(KeyCode.D)) moveDir += Vector3.right;
-
-        //     if (moveDir != Vector3.zero)
-        //     {
-        //         transform.rotation = Quaternion.LookRotation(moveDir.normalized);
-        //         pc.PlayerRunning();
-
-        //         bool isFast = Input.GetKey(KeyCode.LeftShift);
-        //         characterAnimator.SetBool("isRunningForward", !isFast);
-        //         characterAnimator.SetBool("isRunningFast", isFast);
-        //     }
-        //     else
-        //     {
-        //         characterAnimator.SetBool("isRunningForward", false);
-        //         characterAnimator.SetBool("isRunningFast", false);
-        //     }
-        // }
 
         // Climb ladder
         if (isClimbing)
@@ -109,7 +99,6 @@ public class KeyInput : MonoBehaviour
     {
         if (other.CompareTag("ladder"))
         {
-            Debug.Log("Ladder entered");
             isClimbing = true;
         }
     }
@@ -127,7 +116,6 @@ public class KeyInput : MonoBehaviour
     {
         if (other.CompareTag("ladder"))
         {
-            Debug.Log("Ladder exited");
             isClimbing = false;
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.AddForce(Vector3.up * 1, ForceMode.Impulse); // Add upward force when exiting ladder

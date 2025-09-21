@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         gameAudio = GetComponent<AudioSource>();
         if (gameAudio != null)
         {
@@ -38,8 +40,6 @@ public class GameManager : MonoBehaviour
         gameWonMessage.SetActive(false);
         gameOverMessage.SetActive(false);
         restartButton.SetActive(false);
-        //debugging purpose, remove later
-        // titleScreen.SetActive(false);
 
         // Restore keyCount if it was saved
         if (PlayerPrefs.HasKey("TempKeyCount"))
@@ -106,7 +106,6 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         // Save keyCount before reloading
-        Debug.Log("Game is resetting, saving key count and health.");
         PlayerPrefs.SetInt("TempKeyCount", keyCount);
         PlayerPrefs.SetInt("Reseted", 1);
         PlayerPrefs.SetInt("Health", playerHealth.currentHealth);
@@ -138,6 +137,7 @@ public class GameManager : MonoBehaviour
                 restartButton.SetActive(true);
                 isGameActive = false;
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
         }
 
@@ -147,6 +147,8 @@ public class GameManager : MonoBehaviour
             if (gameAudio != null && gameAudio.isPlaying)
             {
                 gameAudio.Stop();
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
         }
     }
@@ -173,16 +175,8 @@ public class GameManager : MonoBehaviour
         titleScreen.SetActive(true);
         restartButton.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         isGameActive = false;
     }
 
-    // Example usage for playing sounds:
-    void PlayGameSound(AudioClip clip)
-    {
-        if (gameAudio != null && clip != null)
-        {
-            gameAudio.loop = false;
-            gameAudio.PlayOneShot(clip);
-        }
-    }
 }
